@@ -1,4 +1,4 @@
-const Command = require('../../Structures/Command');
+const Command = require('../../structures/Command');
 const cp = require('child_process');
 
 module.exports = class execCommand extends Command {
