@@ -57,7 +57,7 @@ client.on('ready', () => {
     try {
       var bod = JSON.parse(body)
       if (bod.data[0] == undefined) {
-         client.user.setActivity(`the real Sakira`, {
+         client.user.setActivity(`YmlyZSBQbmZmdnFs`, {
            type: 'WATCHING'
          });
       } else {
@@ -77,7 +77,7 @@ client.on('ready', () => {
       try {
         var bod = JSON.parse(body)
         if (bod.data[0] == undefined) {
-          client.user.setActivity(`the real Sakira`, {
+          client.user.setActivity(`YmlyZSBQbmZmdnFs`, {
             type: 'WATCHING'
           });
         } else {
