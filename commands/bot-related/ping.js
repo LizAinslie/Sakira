@@ -1,0 +1,23 @@
+const Command = require('../../structures/Command')
+const { MessageEmbed } = require('discord.js')
+
+module.exports = class PingCommand extends Command {
+    constructor(client) {
+        super(client, {
+            name: 'ping',
+            memberName: 'ping',
+            group: 'bot-related',
+            description: 'Ping pong paddy yong.',
+            examples: ['ping']
+        })
+    }
+    async run(msg) {
+        const sent = await msg.say('Ponging...')
+        const embed = new MessageEmbed()
+        .setTitle('Pong!')
+        .setColor('0x36393F')
+        .addField('» Gateway:', Math.round(this.client.ping) + 'ms', true)
+        .addField('» Message:', sent.createdTimestamp - msg.createdTimestamp + 'ms', true)
+        sent.edit(embed)
+    }
+}
