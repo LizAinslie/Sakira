@@ -110,7 +110,7 @@ client.on('reconnect', () =>{
   console.log('I reconnected successfully')
 })
 client.on('unknownCommand', msg => {
-  //console.log(msg.content.replace(/>/g, '').replace(/ /g, '+').replace('$', ''))
+  if (msg.content.replace('>>', '').replace(/ /g, '+').replace('$', '').toUpperCase() === 'IP') return msg.channel.send('haha yeah no')
   request(`http://ask.pannous.com/api?input=${msg.content.replace('>>', '').replace(/ /g, '+').replace('$', '')}`, function (error, response, body) {
     body = JSON.parse(body)
     msg.channel.send(body.output[0].actions.say.text)
