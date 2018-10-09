@@ -4,7 +4,7 @@ module.exports = class footlettuceCommand extends Command {
   constructor(client) {
     super(client, {
       name: 'footlettuce',
-      group: 'community',
+      group: 'fun',
       memberName: 'footlettuce',
       description: 'Case No. 192: The Burger King Incident.',
       examples: ['footlettuce']

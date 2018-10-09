@@ -6,7 +6,7 @@ module.exports = class PingCommand extends Command {
         super(client, {
             name: 'ping',
             memberName: 'ping',
-            group: 'bot-related',
+            group: 'bot-information',
             description: 'Ping pong paddy yong.',
             examples: ['ping']
         })

@@ -6,7 +6,7 @@ module.exports = class ListGroupsCommand extends Command {
 		super(client, {
 			name: 'groups',
 			aliases: ['list-groups', 'show-groups'],
-			group: 'bot-related',
+			group: 'owner',
 			memberName: 'groups',
 			description: 'Lists all command groups.',
 			details: 'Only administrators may use this command.',
@@ -21,7 +21,7 @@ module.exports = class ListGroupsCommand extends Command {
 		return msg.reply(stripIndents`
 			__**Groups**__
 			${this.client.registry.groups.map(grp =>
-				`**${grp.name}:** ${grp.isEnabledIn(msg.guild) ? 'Enabled' : 'Disabled'}`
+				`**${grp.name}**${(grp.name.includes(':')) ? '':':'} ${grp.isEnabledIn(msg.guild) ? 'Enabled' : 'Disabled'}`
 			).join('\n')}
 		`);
 	}

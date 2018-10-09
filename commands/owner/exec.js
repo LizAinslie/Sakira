@@ -6,7 +6,7 @@ module.exports = class execCommand extends Command {
     super(client, {
       name: 'exec',
       aliases: ['exec'],
-      group: 'bot-related',
+      group: 'owner',
       memberName: 'exec',
       description: 'Execute a console command using child processes',
       examples: ['exec'],

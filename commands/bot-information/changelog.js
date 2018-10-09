@@ -10,7 +10,7 @@ module.exports = class ChangelogCommand extends Command {
 		super(client, {
 			name: 'changelog',
 			aliases: ['updates', 'commits', 'update'],
-			group: 'bot-related',
+			group: 'bot-information',
 			memberName: 'changelog',
 			description: 'Responds with Sakira\'s latest 10 commits.',
 			guarded: true

@@ -5,7 +5,7 @@ module.exports = class supportCommand extends Command {
   constructor(client) {
     super(client, {
       name: 'support',
-      group: 'support',
+      group: 'bot-information',
       memberName: 'support',
       description: 'Invite to the support guild',
       examples: ['support']

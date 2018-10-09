@@ -5,7 +5,7 @@ module.exports = class WebhookCommand extends Command {
         super(client,{
             name: 'webhook',
             aliases: ['announce'],
-            group: 'bot-related',
+            group: 'owner',
             memberName: 'webhook',
             description: 'Bot owners can use this to send messages to the DarkSakira webhook in Central',
             examples: ['permissions', 'perms'],

@@ -5,7 +5,7 @@ module.exports = class wrapcodeCommand extends Command {
     super(client, {
       name: 'wrapcode',
       aliases: ['wrap', 'wrapmini'],
-      group: 'community',
+      group: 'fun',
       memberName: 'wrapcode',
       description: 'Discord Quick code markdown',
       examples: ['wrapcode']

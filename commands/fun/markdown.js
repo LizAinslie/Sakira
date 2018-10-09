@@ -5,7 +5,7 @@ module.exports = class markdownCommand extends Command {
     super(client, {
       name: 'markdown',
       aliases: ['md'],
-      group: 'community',
+      group: 'fun',
       memberName: 'markdown',
       description: 'Discord Quick markdown',
       examples: ['wrapcode']

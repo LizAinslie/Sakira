@@ -6,7 +6,7 @@ module.exports = class UnloadCommandCommand extends Command {
 		super(client, {
 			name: 'unload',
 			aliases: ['unload-command'],
-			group: 'bot-related',
+			group: 'owner',
 			memberName: 'unload',
 			description: 'Unloads a command.',
 			details: oneLine`

@@ -6,7 +6,7 @@ module.exports = class DonateCommand extends Command {
 		super(client, {
 			name: 'donate',
 			aliases: ['patreon'],
-			group: 'bot-related',
+			group: 'bot-information',
 			memberName: 'donate',
 			description: 'Responds with the bot\'s donation links.',
 			guarded: true

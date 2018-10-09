@@ -8,7 +8,7 @@ module.exports = class infoCommand extends Command {
   constructor(client) {
     super(client, {
       name: 'info',
-      group: 'bot-related',
+      group: 'bot-information',
       memberName: 'info',
       description: 'General bot infomation.',
       examples: ['info']
@@ -16,11 +16,11 @@ module.exports = class infoCommand extends Command {
   }
   async run(msg) {
     const embed = new MessageEmbed()
-    .setTitle('Information:')
+    .setTitle(this.client.user.username)
     .setColor('0x36393F')
-    .setDescription('A bot focusing on the business end of a Fun time\nWebsite:** [Click Here](https://kirox.xyz)**\nInvite:** [Click Here](https://discordapp.com/oauth2/authorize?client_id=378909180666314754&scope=bot&permissions=8 )**\nSupport Guild:** [Click Here](https://discord.gg/yw6nrwz)**\nPatreon:** [Click Here](https://www.patreon.com/axelgreavette)**')
-    .addField("­", `Channels: **${this.client.channels.size}**\nUsers: **${this.client.users.size}**\nGuilds: **${this.client.guilds.size}**\nCommands: **${this.client.registry.commands.size}**`, true)
-    .addField("­", `Version: **2.0.0**\nPing: **${this.client.ping.toFixed(2)}ms**\nUptime: **${uptime()}**\nRAM: **${formatBytes(process.memoryUsage().heapUsed,2)}**`, true)
+    .setDescription('A bot with enough features to make you want to ~~die~~ jump up and down')
+    .addField('Creator[\'s]:', '**Kirox#3435** and **Kerox#1558**')
+    .addField('Code:', 'My entire source is available on [Github](https://github.com/axelgreavette/sakira)')
    msg.embed(embed)
   }
 }

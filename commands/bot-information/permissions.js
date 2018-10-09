@@ -6,7 +6,7 @@ module.exports = class statsCommand extends Command {
     super(client, {
       name: 'permissions',
       aliases: ['perms'],
-      group: 'bot-related',
+      group: 'bot-information',
       memberName: 'permissions',
       description: 'List bot permissions for the current server.',
       examples: ['permissions', 'perms']

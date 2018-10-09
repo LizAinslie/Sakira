@@ -29,11 +29,9 @@ client.registry
     ['services', 'Services:'],
     ['tags', 'Tags:'],
     ['administrative', 'Administrative:'],
-    ['community', 'Community:'],
-    ['support', 'Support:'],
-    ['bot-related', 'Bot Related:'],
+    ['bot-information', 'Bot Information:'],
     ['profiles', 'Profiles:'],
-    ['owner', 'Owner Only:']
+    ['owner', 'Bot Owner:']
   ])
   .registerDefaultGroups()
   .registerDefaultCommands({
@@ -110,6 +108,13 @@ client.on('disconnect', e => {
 })
 client.on('reconnect', () =>{
   console.log('I reconnected successfully')
+})
+client.on('unknownCommand', msg => {
+  //console.log(msg.content.replace(/>/g, '').replace(/ /g, '+').replace('$', ''))
+  request(`http://ask.pannous.com/api?input=${msg.content.replace('>>', '').replace(/ /g, '+').replace('$', '')}`, function (error, response, body) {
+    body = JSON.parse(body)
+    msg.channel.send(body.output[0].actions.say.text)
+  })
 })
 
 process.on('unhandledRejection', r=>{
