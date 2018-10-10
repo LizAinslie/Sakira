@@ -19,7 +19,7 @@ module.exports = class statsCommand extends Command {
     .setTitle('Statistics:')
     .setColor('0x36393F')
     .addField("­", `Channels: **${this.client.channels.size}**\nUsers: **${this.client.users.size}**\nGuilds: **${this.client.guilds.size}**\nCommands: **${this.client.registry.commands.size}**`, true)
-    .addField("­", `Version: **2.0.0**\nPing: **${this.client.ping.toFixed(2)}ms**\nUptime: **${uptime()}**\nRAM: **${formatBytes(process.memoryUsage().heapUsed,2)}**\n`, true)
+    .addField("­", `Version: **3.0.0**\nPing: **${this.client.ping.toFixed(2)}ms**\nUptime: **${uptime()}**\nRAM: **${formatBytes(process.memoryUsage().heapUsed,2)}**\n`, true)
    msg.embed(embed)
   }
 }

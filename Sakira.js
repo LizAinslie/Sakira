@@ -102,7 +102,7 @@ client.on('debug', dbg => {
 })
 client.on('disconnect', e => {
   setInterval(() => {
-    client.login(config.token)
+    client.login(SAKIRA_TOKEN)
   }, 120000)
   console.log(e)
 })
@@ -111,7 +111,7 @@ client.on('reconnect', () =>{
 })
 client.on('unknownCommand', msg => {
   if (msg.content.replace('>>', '').replace(/ /g, '+').replace('$', '').toUpperCase() === 'IP') return msg.channel.send('haha yeah no')
-  request(`http://ask.pannous.com/api?input=${msg.content.replace('>>', '').replace(/ /g, '+').replace('$', '')}`, function (error, response, body) {
+  request(`http://ask.pannous.com/api?input=${encodeURI(msg.content.replace('>>', '').replace(/ /g, '+').replace('$', ''))}`, function (error, response, body) {
     body = JSON.parse(body)
     msg.channel.send(body.output[0].actions.say.text)
   })
@@ -119,7 +119,7 @@ client.on('unknownCommand', msg => {
 
 process.on('unhandledRejection', r=>{
   setInterval(() => {
-    client.login(config.token)
+    client.login(SAKIRA_TOKEN)
   }, 120000)
   console.log(r)
 })
