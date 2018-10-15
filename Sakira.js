@@ -5,6 +5,7 @@ const Client = require('./structures/Client')
 const sqlite = require('sqlite')
 const request = require('request')
 const Prototypes = require('./util/Prototypes')
+const trbmb = require('./util/Trbmb')
 
 //client setup
 const client = new Client({
@@ -110,11 +111,16 @@ client.on('reconnect', () =>{
   console.log('I reconnected successfully')
 })
 client.on('unknownCommand', msg => {
-  if (msg.content.replace('>>', '').replace(/ /g, '+').replace('$', '').toUpperCase() === 'IP') return msg.channel.send('haha yeah no')
-  request(`http://ask.pannous.com/api?input=${encodeURI(msg.content.replace('>>', '').replace(/ /g, '+').replace('$', ''))}`, function (error, response, body) {
-    body = JSON.parse(body)
-    msg.channel.send(body.output[0].actions.say.text)
-  })
+  try{
+    const input = msg.content.replace('>>', '').replace('$', '').replace(`<@${client.user.id}> `, '').replace(`<!@${client.user.id}> `, '')
+    if (encodeURI(input.toUpperCase()) === 'IP') return msg.channel.send('haha yeah no')
+    request(`http://ask.pannous.com/api?input=${input}`, function (error, response, body) {
+      body = JSON.parse(body)
+      msg.channel.send((body.output[0]) ? body.output[0].actions.say.text : new trbmb().trbmb())
+    })
+}catch(e){
+  console.log(e)
+}
 })
 
 process.on('unhandledRejection', r=>{
