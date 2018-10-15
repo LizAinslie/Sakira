@@ -2,21 +2,12 @@ version: 2
 jobs:
   test:
     docker:
-      # specify the version you desire here
       - image: yoant/circleci-node-canvas
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
     working_directory: ~/repo
 
     steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
+      - checkout  
+    - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
@@ -28,29 +19,21 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm run-script lint
- 
+      - run: npm run lint  
   release:
     docker:
       - image: yoant/circleci-node-canvas
-
-    working_directory: ~/repo
-
     steps:
       - checkout
-
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-        
       - run: npm install
+      # Run optional required steps before releasing
+      # - run: npm run build-script
       - run: npx semantic-release
 ​
 workflows:
   version: 2
   test_and_release:
+    # Run the test jobs first, then the release only when all the test jobs are successful
     jobs:
       - test
       - release:
