@@ -115,7 +115,7 @@ client.on("unknownCommand", msg => {
         if (encodeURI(input.toUpperCase()) === "IP") return msg.channel.send("haha yeah no")
         request(`http://ask.pannous.com/api?input=${input}`, function (error, response, body) {
             body = JSON.parse(body)
-            msg.channel.send((body.output[0]) ? body.output[0].actions.say.text : new trbmb().trbmb())
+            msg.channel.send((body.output[0]) ? body.output[0].actions.say.text : new trbmb().trbmb)
         })
     }catch(e){
         console.log(e)

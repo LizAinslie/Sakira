@@ -3,7 +3,7 @@
 [![Discord Server](https://discordapp.com/api/guilds/357272833824522250/embed.png)](https://discord.gg/ZPmq7EQ)
 [![Donate on Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/axelgreavette)
 [![Dependancies](https://david-dm.org/axelgreavette/Sakira.svg)](https://david-dm.org/axelgreavette/Sakira)
-[![CircleCI](https://circleci.com/gh/axelgreavette/Sakira.svg?style=svg)](https://circleci.com/gh/axelgreavette/Sakira)
+[![CircleCI](https://circleci.com/gh/axelgreavette/Sakira.svg?style=shield)](https://circleci.com/gh/axelgreavette/Sakira)
 
 A bot with enough features to make you want to ~~die~~ jump up and down. 
 
