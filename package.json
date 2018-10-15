@@ -4,7 +4,8 @@
   "description": "A fun, mulitpurpose Discord bot with a varied bunch of commands ranging from Moderation and Administration to Steam Profiles and Garfield",
   "main": "Sakira.js",
   "scripts": {
-    "start": "node Sakira.js"
+    "start": "node Sakira.js",
+    "test": "eslint ."
   },
   "author": "Axel Greavette",
   "dependencies": {

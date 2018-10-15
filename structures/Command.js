@@ -1,10 +1,10 @@
-const { Command } = require('discord.js-commando');
+const { Command } = require("discord.js-commando")
 
 module.exports = class SakiraCommand extends Command {
-	constructor(client, info) {
-		super(client, info);
+    constructor(client, info) {
+        super(client, info)
 
-		this.argsSingleQuotes = info.argsSingleQuotes || false;
-		this.throttling = info.throttling || { usages: 1, duration: 2 };
-	}
-};
+        this.argsSingleQuotes = info.argsSingleQuotes || false
+        this.throttling = info.throttling || { usages: 1, duration: 2 }
+    }
+}
