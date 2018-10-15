@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node Sakira.js",
     "versioning": "npx semantic-release",
-    "test": "eslint . && npm semantic-release"
+    "test": "eslint . && npx semantic-release"
   },
   "author": "Axel Greavette",
   "dependencies": {
