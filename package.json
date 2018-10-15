@@ -34,8 +34,5 @@
   "devDependencies": {
     "eslint": "^5.7.0",
     "semantic-release": "^15.9.17"
-  },
-  "release": {
-      "branch": "next"
   }
 }
