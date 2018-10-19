@@ -5,7 +5,7 @@
 [![Dependancies](https://david-dm.org/axelgreavette/Sakira.svg)](https://david-dm.org/axelgreavette/Sakira)
 [![CircleCI](https://circleci.com/gh/axelgreavette/Sakira.svg?style=shield)](https://circleci.com/gh/axelgreavette/Sakira)
 
-A bot with enough features to make you want to ~~die~~ jump up and down. 
+A bot with enough features to make you want to ~~die~~ jump up and down.
 
 ## Hosting
 
