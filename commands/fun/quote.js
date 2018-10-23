@@ -16,7 +16,7 @@ module.exports = class quoteCommand extends Command {
     run(msg) {
         request("http://inspirobot.me/api?generate=true&oy=vey", function(error, response, body) {
             const embed = new MessageEmbed()
-              .setImage(body)
+                .setImage(body)
             return msg.embed(embed)
         })
     }

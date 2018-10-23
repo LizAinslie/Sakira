@@ -5,10 +5,11 @@
   "main": "Sakira.js",
   "scripts": {
     "start": "node Sakira.js",
-    "lint": "eslint ."
+    "lint": "eslint . --fix"
   },
   "author": "Axel Greavette",
   "dependencies": {
+    "@sentry/node": "^4.1.1",
     "canvas": "^2.0.0-alpha.13",
     "cheerio": "^1.0.0-rc.2",
     "circleci": "^0.3.3",
@@ -16,6 +17,7 @@
     "discord.js": "github:discordjs/discord.js",
     "discord.js-commando": "github:discordjs/Commando",
     "dotenv": "^6.0.0",
+    "ffmpeg-binaries": "^4.0.0",
     "garfield": "^1.1.2",
     "javascript-obfuscator": "^0.17.3",
     "malapi": "0.0.3",
@@ -23,6 +25,7 @@
     "minify": "^3.0.5",
     "moment": "^2.22.2",
     "node-ermahgerd": "0.0.1",
+    "node-opus": "^0.3.0",
     "node-superfetch": "^0.1.4",
     "pirate-speak": "^1.0.1",
     "puppeteer": "^1.8.0",

@@ -4,7 +4,10 @@ const path = require("path")
 const Client = require("./structures/Client")
 const request = require("request")
 const trbmb = require("./util/Trbmb")
-
+const Sentry = require("@sentry/node")
+Sentry.init({
+    dsn: "https://1631100228894254ad4680255e5c7aa0@sentry.io/1301758"
+})
 
 //client setup
 const client = new Client({
@@ -31,7 +34,8 @@ client.registry
         ["administrative", "Administrative:"],
         ["bot-information", "Bot Information:"],
         ["profiles", "Profiles:"],
-        ["owner", "Bot Owner:"]
+        ["owner", "Bot Owner:"],
+        ["voice", "Voice Chat:"]
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
