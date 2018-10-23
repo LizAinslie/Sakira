@@ -17,6 +17,7 @@ module.exports = class quoteCommand extends Command {
         request("http://inspirobot.me/api?generate=true&oy=vey", function(error, response, body) {
             const embed = new MessageEmbed()
                 .setImage(body)
+                .setColor("0x36393F")
             return msg.embed(embed)
         })
     }
