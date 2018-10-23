@@ -5,7 +5,7 @@
   "main": "Sakira.js",
   "scripts": {
     "start": "node Sakira.js",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix && npm prune"
   },
   "author": "Axel Greavette",
   "dependencies": {
