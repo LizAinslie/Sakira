@@ -18,6 +18,7 @@
     "dotenv": "^6.0.0",
     "ffmpeg-binaries": "^4.0.0",
     "garfield": "^1.1.2",
+    "heapdump": "^0.3.9",
     "javascript-obfuscator": "^0.17.3",
     "malapi": "0.0.3",
     "mathjs": "^5.1.1",

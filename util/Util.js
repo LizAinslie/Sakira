@@ -1,5 +1,4 @@
 const crypto = require("crypto")
-const { SUCCESS_EMOJI_ID } = process.env
 const yes = ["yes", "y", "ye", "yeah", "yup", "yea", "ya"]
 const no = ["no", "n", "nah", "nope", "nop"]
 
@@ -28,13 +27,6 @@ module.exports = class Util {
         return text.length > maxLen ? `${text.substr(0, maxLen - 3)}...` : text
     }
 
-    static duration(ms) {
-        const sec = Math.floor((ms / 1000) % 60).toString()
-        const min = Math.floor((ms / (1000 * 60)) % 60).toString()
-        const hrs = Math.floor(ms / (1000 * 60 * 60)).toString()
-        return `${hrs.padStart(2, "0")}:${min.padStart(2, "0")}:${sec.padStart(2, "0")}`
-    }
-
     static randomRange(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min
     }
@@ -50,6 +42,12 @@ module.exports = class Util {
 
     static firstUpperCase(text, split = " ") {
         return text.split(split).map(word => `${word.charAt(0).toUpperCase()}${word.slice(1)}`).join(" ")
+    }
+
+    static formatNumber(number) {
+        return Number.parseFloat(number).toLocaleString(undefined, {
+            maximumFractionDigits: 2
+        })
     }
 
     static base64(text, mode = "encode") {
@@ -78,11 +76,10 @@ module.exports = class Util {
         return today
     }
 
-    static round(number, decimalPlace) {
-        return number.toFixed(decimalPlace)
-    }
-	
-    static async awaitPlayers(msg, max, min, { time = 30000, dmCheck = false } = {}) {
+    static async awaitPlayers(msg, max, min, {
+        time = 30000,
+        dmCheck = false
+    } = {}) {
         const joined = []
         joined.push(msg.author.id)
         const filter = res => {
@@ -90,10 +87,13 @@ module.exports = class Util {
             if (joined.includes(res.author.id)) return false
             if (res.content.toLowerCase() !== "join game") return false
             joined.push(res.author.id)
-            res.react(SUCCESS_EMOJI_ID || "✅").catch(() => null)
+            res.react("👌").catch(() => null)
             return true
         }
-        const verify = await msg.channel.awaitMessages(filter, { max, time })
+        const verify = await msg.channel.awaitMessages(filter, {
+            max,
+            time
+        })
         verify.set(msg.id, msg)
         if (dmCheck) {
             for (const message of verify.values()) {

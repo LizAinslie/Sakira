@@ -2,9 +2,11 @@ const Command = require("../../structures/Command")
 const { MessageEmbed } = require("discord.js")
 const { OWNERS } = process.env
 const circleci = require("circleci")
+const { CIRCLE_AUTH } = process.env
+
 const ci = new circleci({
-    auth: "7fdb048a9001fd58e6f86d35bb81f252b1b38408"
-})
+    auth: CIRCLE_AUTH
+}) 
 
 module.exports = class infoCommand extends Command {
     constructor(client) {

@@ -15,6 +15,7 @@ module.exports = class EnableCommandCommand extends Command {
 			`,
             examples: ["enable util", "enable Utility", "enable prefix"],
             guarded: true,
+            hidden: true,
             args: [
                 {
                     key: "cmdOrGrp",

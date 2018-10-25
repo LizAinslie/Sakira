@@ -17,6 +17,7 @@ module.exports = class LoadCommandCommand extends Command {
             examples: ["load some-command"],
             ownerOnly: true,
             guarded: true,
+            hidden: true,
             args: [
                 {
                     key: "command",

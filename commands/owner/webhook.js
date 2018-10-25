@@ -10,6 +10,7 @@ module.exports = class WebhookCommand extends Command {
             description: "Bot owners can use this to send messages to the DarkSakira webhook in Central",
             examples: ["permissions", "perms"],
             ownerOnly: true,
+            hidden: true,
             args: [
                 {
                     key: "content",

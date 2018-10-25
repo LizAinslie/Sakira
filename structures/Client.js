@@ -1,8 +1,8 @@
-const { CommandoClient } = require("discord.js-commando")
+const Commando = require("discord.js-commando")
 const { WebhookClient } = require("discord.js")
 const { SAKIRA_WEBHOOK_ID, SAKIRA_WEBHOOK_TOKEN } = process.env
 
-module.exports = class SakiraClient extends CommandoClient {
+module.exports = class SakiraClient extends Commando.CommandoClient {
     constructor(options) {
         super(options)
 

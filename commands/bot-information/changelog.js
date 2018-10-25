@@ -1,8 +1,8 @@
 const Command = require("../../structures/Command")
 const { MessageEmbed } = require("discord.js")
 const request = require("request")
+const { GITHUB } = process.env
 
-function base64(text,mode="encode"){if(mode==="encode")return Buffer.from(text).toString("base64");if(mode==="decode")return Buffer.from(text,"base64").toString("utf8")||null;throw new TypeError(`${mode}is not a supported base64 mode.`)}
 function shorten(text,maxLen=2000){return text.length>maxLen?`${text.substr(0,maxLen-3)}...`:text}
 
 module.exports = class ChangelogCommand extends Command {
@@ -22,7 +22,7 @@ module.exports = class ChangelogCommand extends Command {
             url: "https://api.github.com/repos/axelgreavette/sakira/commits",
             headers: {
                 "User-Agent": "Sakira",
-                "Authorization": `Basic ${base64("axelgreavette:Greavette1")}` 
+                "Authorization": GITHUB 
             }
         }
         request(options,function(error, response, body) {

@@ -15,6 +15,7 @@ module.exports = class DisableCommandCommand extends Command {
 			`,
             examples: ["disable util", "disable Utility", "disable prefix"],
             guarded: true,
+            hidden: true,
             args: [
                 {
                     key: "cmdOrGrp",

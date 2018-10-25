@@ -1,8 +1,10 @@
 const Command = require("../../structures/Command")
 const { MessageEmbed } = require("discord.js")
 const circleci = require("circleci")
+const { CIRCLE_AUTH, SAKIRA_VERSION } = process.env
+
 const ci = new circleci({
-    auth: "7fdb048a9001fd58e6f86d35bb81f252b1b38408"
+    auth: CIRCLE_AUTH
 })
 
 function uptime(){var msec=process.uptime().toFixed(0)*1000;var days=Math.floor(msec/1000/60/60/24);msec-=days*1000*60*60*24;var hours=Math.floor(msec/1000/60/60);msec-=hours*1000*60*60;var mins=Math.floor(msec/1000/60);msec-=mins*1000*60;var secs=Math.floor(msec/1000);var timestr="";if(days>0){timestr+=days+"d "} if(hours>0){timestr+=hours+"h "} if(mins>0){timestr+=mins+"m "} if(secs>0){timestr+=secs+"s"} return timestr}
@@ -15,7 +17,7 @@ module.exports = class statsCommand extends Command {
             group: "bot-information",
             memberName: "stats",
             description: "General bot statistics.",
-            examples: ["stats"]
+            examples: ["stats"],
         })
     }
     async run(msg) {
@@ -25,7 +27,7 @@ module.exports = class statsCommand extends Command {
             .setTitle("Statistics:")
             .setColor("0x36393F")
             .addField("­", `Channels: **${this.client.channels.size}**\nUsers: **${this.client.users.size}**\nGuilds: **${this.client.guilds.size}**\nCommands: **${this.client.registry.commands.size}**\nBuild: **${res[0].status === "success" ? "Passing" : "Failing"}**`, true)
-            .addField("­", `Version: **3.0.0**\nPing: **${this.client.ping.toFixed(2)}ms**\nUptime: **${uptime()}**\nRAM: **${formatBytes(process.memoryUsage().heapUsed,2)}**\n`, true)
+            .addField("­", `Version: **${SAKIRA_VERSION}**\nPing: **${this.client.ping.toFixed(2)}ms**\nUptime: **${uptime()}**\nRAM: **${formatBytes(process.memoryUsage().heapUsed,2)}**\n`, true)
         msg.embed(embed)
     }
 }

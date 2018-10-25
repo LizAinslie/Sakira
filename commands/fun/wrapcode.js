@@ -8,7 +8,8 @@ module.exports = class wrapcodeCommand extends Command {
             group: "fun",
             memberName: "wrapcode",
             description: "Discord Quick code markdown",
-            examples: ["wrapcode"]
+            examples: ["wrapcode"],
+            nsfw: true
         })
     }
     run(msg) {

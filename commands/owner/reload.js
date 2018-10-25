@@ -17,6 +17,7 @@ module.exports = class ReloadCommandCommand extends Command {
             examples: ["reload some-command"],
             ownerOnly: true,
             guarded: true,
+            hidden: true,
             args: [
                 {
                     key: "cmdOrGrp",

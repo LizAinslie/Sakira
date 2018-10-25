@@ -10,7 +10,8 @@ module.exports = class execCommand extends Command {
             memberName: "exec",
             description: "Execute a console command using child processes",
             examples: ["exec"],
-	  ownerOnly: true,
+            ownerOnly: true,
+            hidden: true,
             args: [
                 {
                     key: "input",

@@ -4,7 +4,8 @@ const path = require("path")
 const Client = require("./structures/Client")
 const request = require("request")
 const trbmb = require("./util/Trbmb")
-
+const sqlite = require("sqlite")
+const { SQLiteProvider } = require("discord.js-commando")
 
 //client setup
 const client = new Client({
@@ -15,11 +16,12 @@ const client = new Client({
     unknownCommandResponse: false
 })
 
-/*prefixes
-client.setProvider(
-    sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => new client.SQLiteProvider(db))
-).catch(console.error);
-*/
+
+sqlite.open(path.join(__dirname, "database.sqlite3")).then((db) => {
+    client.setProvider(new SQLiteProvider(db))
+})
+
+
 //register commands
 client.registry
     .registerDefaultTypes()
@@ -37,7 +39,8 @@ client.registry
     .registerDefaultGroups()
     .registerDefaultCommands({
         ping: false,
-        commandState: false
+        commandState: false,
+        eval: false
     })
     .registerCommandsIn(path.join(__dirname, "commands"))
 
@@ -112,11 +115,12 @@ client.on("reconnect", () =>{
 })
 client.on("unknownCommand", msg => {
     try{
-        const input = msg.content.replace(">>", "").replace("$", "").replace(`<@${client.user.id}> `, "").replace(`<!@${client.user.id}> `, "")
+        if(msg.content.match(/^\$/ || /^>>/) || msg.content.startsWith(msg.guild._commandPrefix)) return false
+        const input = msg.content.replace(`<@${client.user.id}> `, "").replace(`<!@${client.user.id}> `, "")
         if (encodeURI(input.toUpperCase()) === "IP") return msg.channel.send("haha yeah no")
         request(`http://ask.pannous.com/api?input=${input}`, function (error, response, body) {
             body = JSON.parse(body)
-            msg.channel.send((body.output[0]) ? body.output[0].actions.say.text : new trbmb().trbmb)
+            msg.channel.send((body.output[0]) ? body.output[0].actions.say.text.replace("Jeannie", "Sakira") : new trbmb().trbmb)
         })
     }catch(e){
         console.log(e)

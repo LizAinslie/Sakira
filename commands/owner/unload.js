@@ -16,6 +16,7 @@ module.exports = class UnloadCommandCommand extends Command {
             examples: ["unload some-command"],
             ownerOnly: true,
             guarded: true,
+            hidden: true,
             args: [
                 {
                     key: "command",
