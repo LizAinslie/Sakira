@@ -30,6 +30,7 @@
     "pirate-speak": "^1.0.1",
     "puppeteer": "^1.8.0",
     "request": "^2.87.0",
+    "spotify": "^0.3.0",
     "sqlite": "^2.9.2",
     "steamidconvert": "^0.2.4",
     "urban-dictionary": "^1.0.7",

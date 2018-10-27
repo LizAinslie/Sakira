@@ -34,6 +34,7 @@ module.exports = class npmCommand extends Command {
                 .addField("License:", npm.license, true)
                 .addField("Maintainers:", maintainers.join(", "), true)
                 .setColor("0x36393F")
+                .setFooter(`Latest v${npm["dist-tags"].latest ? npm["dist-tags"].latest : "????"}`)
             msg.embed(embed)
         })
     }

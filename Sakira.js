@@ -115,13 +115,15 @@ client.on("reconnect", () =>{
 })
 client.on("unknownCommand", msg => {
     try{
-        if(msg.content.match(/^\$/ || /^>>/) || msg.content.startsWith(msg.guild._commandPrefix)) return false
+        if(msg.content.match(/^\$/ || /^\>>/) || msg.content.startsWith(msg.guild._commandPrefix)) return false
         const input = msg.content.replace(`<@${client.user.id}> `, "").replace(`<!@${client.user.id}> `, "")
+        msg.channel.startTyping()
         if (encodeURI(input.toUpperCase()) === "IP") return msg.channel.send("haha yeah no")
         request(`http://ask.pannous.com/api?input=${input}`, function (error, response, body) {
             body = JSON.parse(body)
             msg.channel.send((body.output[0]) ? body.output[0].actions.say.text.replace("Jeannie", "Sakira") : new trbmb().trbmb)
         })
+        msg.channel.stopTyping()
     }catch(e){
         console.log(e)
     }
