@@ -6,13 +6,13 @@ const request = require("request")
 const trbmb = require("./util/Trbmb")
 const sqlite = require("sqlite")
 const { SQLiteProvider } = require("discord.js-commando")
-const Sentry = require('@sentry/node');
+const Sentry = require("@sentry/node");
 
 //sentry initialization
 Sentry.init({ 
-    dsn: 'https://1631100228894254ad4680255e5c7aa0@sentry.io/1301758',
+    dsn: "https://1631100228894254ad4680255e5c7aa0@sentry.io/1301758",
     release: `sakira@${SAKIRA_VERSION}`
-});
+})
 
 //client setup
 const client = new Client({
