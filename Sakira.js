@@ -1,11 +1,18 @@
 require("dotenv").config()
-const { SAKIRA_TOKEN, OWNERS, SAKIRA_PREFIX, INVITE, TWITCH_CLIENT_ID } = process.env
+const { SAKIRA_TOKEN, OWNERS, SAKIRA_PREFIX, INVITE, TWITCH_CLIENT_ID, SAKIRA_VERSION } = process.env
 const path = require("path")
 const Client = require("./structures/Client")
 const request = require("request")
 const trbmb = require("./util/Trbmb")
 const sqlite = require("sqlite")
 const { SQLiteProvider } = require("discord.js-commando")
+const Sentry = require('@sentry/node');
+
+//sentry initialization
+Sentry.init({ 
+    dsn: 'https://1631100228894254ad4680255e5c7aa0@sentry.io/1301758',
+    release: `sakira@${SAKIRA_VERSION}`
+});
 
 //client setup
 const client = new Client({
