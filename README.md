@@ -12,9 +12,7 @@ A bot with enough features to make you want to ~~die~~ jump up and down.
 ## Hosting
 
 #### Self Hosting:
-To self host, clone the repo do your desktop. Open up you favorite editor, and open the `.env.example` file. Fill out the information required. Save and rename it as `.env`. 
-
-Open up a command prompt window and enter `node Sakira.js` to start the bot.
+To self host simply follow [this](https://github.com/axelgreavette/Sakira/wiki/Self-hosting) guide
 
 #### Home Server:
 
