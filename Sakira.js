@@ -1,16 +1,16 @@
 require("dotenv").config()
-const { SAKIRA_TOKEN, OWNERS, SAKIRA_PREFIX, INVITE, TWITCH_CLIENT_ID, SAKIRA_VERSION } = process.env
+const { SAKIRA_TOKEN, OWNERS, SAKIRA_PREFIX, INVITE, TWITCH_CLIENT_ID, SAKIRA_VERSION, SAKIRA_SENTRY_DSN } = process.env
 const path = require("path")
 const Client = require("./structures/Client")
 const request = require("request")
 const trbmb = require("./util/Trbmb")
 const sqlite = require("sqlite")
 const { SQLiteProvider } = require("discord.js-commando")
-const Sentry = require("@sentry/node");
+const Sentry = require("@sentry/node")
 
 //sentry initialization
 Sentry.init({ 
-    dsn: "https://1631100228894254ad4680255e5c7aa0@sentry.io/1301758",
+    dsn: SAKIRA_SENTRY_DSN,
     release: `sakira@${SAKIRA_VERSION}`
 })
 
@@ -122,17 +122,32 @@ client.on("reconnect", () =>{
 })
 client.on("unknownCommand", msg => {
     try{
-        if(msg.content.match(/^\$/ || /^\>>/) || msg.content.startsWith(msg.guild._commandPrefix)) return false
-        const input = msg.content.replace(`<@${client.user.id}> `, "").replace(`<!@${client.user.id}> `, "")
-        msg.channel.startTyping()
-        if (encodeURI(input.toUpperCase()) === "IP") return msg.channel.send("haha yeah no")
-        request(`http://ask.pannous.com/api?input=${input}`, function (error, response, body) {
-            body = JSON.parse(body)
-            msg.channel.send((body.output[0]) ? body.output[0].actions.say.text.replace("Jeannie", "Sakira") : new trbmb().trbmb)
-        })
-        msg.channel.stopTyping()
+        if ((msg.guild) ? !msg.content.startsWith(msg.guild._commandPrefix) : !msg.content.match(/^\$/) && !msg.content.match(/^\>\>/)) {
+            return false
+        }else if(msg.channel.type === "dm"){
+            return false
+        }else{
+            const input = msg.content.replace(`<@${client.user.id}> `, "").replace(`<!@${client.user.id}> `, "")
+            msg.channel.startTyping()
+            if (encodeURI(input.toUpperCase()) === "IP") return msg.channel.send("haha yeah no")
+            request(`http://ask.pannous.com/api?input=${input}`, function (error, response, body) {
+                body = JSON.parse(body)
+                msg.channel.send((body.output[0]) ? body.output[0].actions.say.text.replace("Jeannie", "Sakira") : new trbmb().trbmb)
+            })
+            msg.channel.stopTyping()
+        }
     }catch(e){
         console.log(e)
+    }
+})
+client.on("guildMemberAdd", async (member) => {
+    if (member.guild.settings.get("wc") && member.guild.settings.get("wm")) {
+        const wc = await member.guild.channels.get(member.guild.settings.get("wc"))
+        const wm = await member.guild.settings.get("wm")
+        wc.send(wm.replace(/\$\$USER/g, member.displayName).replace(/\$\$GUILD/g, member.guild.name).replace(/\$\$MENTION/g, member))
+    }
+    if (member.guild.settings.get("arr")) {
+        await member.roles.add(member.guild.settings.get("arr"))
     }
 })
 

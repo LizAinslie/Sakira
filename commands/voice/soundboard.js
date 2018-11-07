@@ -43,8 +43,8 @@ module.exports = class SoundboardCommand extends Command {
             const connection = await voiceChannel.join()
             const dispatcher = connection.play(path.join(__dirname, "..", "..", "assets", "sounds", sounds[sound]))
             await msg.react("🔉")
-            dispatcher.once("finish", () => voiceChannel.leave())
-            dispatcher.once("error", () => voiceChannel.leave())
+            dispatcher.once("finish", () => voiceChannel.leave(), dispatcher.destroy() | dispatcher.end())
+            dispatcher.once("error", () => voiceChannel.leave(), dispatcher.destroy() | dispatcher.end())
             return null
         } catch (err) {
             voiceChannel.leave()

@@ -22,7 +22,7 @@ module.exports = class npmCommand extends Command {
     run(msg, { name }) {
         request(`https://registry.npmjs.com/${name}`, function(error, response, body) {
             const npm = JSON.parse(body)
-            let maintainers = []
+            const maintainers = []
             npm.maintainers.forEach(n => {
                 maintainers.push(n.name)
             })

@@ -43,8 +43,8 @@ module.exports = class tts extends Command {
                 .query({ text })
             const dispatcher = connection.play(url)
             await msg.react("🔉")
-            dispatcher.once("finish", () => voiceChannel.leave())
-            dispatcher.once("error", () => voiceChannel.leave())
+            dispatcher.once("finish", () => voiceChannel.leave(), dispatcher.destroy() | dispatcher.end())
+            dispatcher.once("error", () => voiceChannel.leave(), dispatcher.destroy() | dispatcher.end())
             return null
         } catch (err) {
             voiceChannel.leave()

@@ -16,17 +16,15 @@ module.exports = class pruneCommand extends Command {
                     key: "input",
                     prompt: "How many messages should I delete?",
                     type: "integer",
-                    validate: num => {
-                        if(num > 99) return true
-                        return "The specified number is to large. Please try again with a number under or equal to 99"
-                    }
+                    validate: num => num <= 99,
+                    parse: num => num + 1
                 }
             ]
         })
     }
     run(msg, { input }) {
-        msg.channel.bulkDelete(input + 1).then(() => {
-            msg.channel.send(`Deleted ${input} messages`).then(message => message.delete(10000))
+        msg.channel.bulkDelete(input).then(() => {
+            msg.channel.send(`Deleted ${input} messages`).then(message => setTimeout(() => {message.delete()}, 10000))
         }).catch()
     }
 }
