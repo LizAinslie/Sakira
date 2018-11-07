@@ -108,9 +108,6 @@ client.on("error", e => {
 client.on("warn", warn => {
     console.warn(warn)
 })
-client.on("debug", dbg => {
-    console.debug(dbg)
-})
 client.on("disconnect", e => {
     setInterval(() => {
         client.login(SAKIRA_TOKEN)
