@@ -1,5 +1,6 @@
 # Sakira
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/941440ec130544a188231245d3ee0667)](https://app.codacy.com/app/axelgreavette/Sakira?utm_source=github.com&utm_medium=referral&utm_content=axelgreavette/Sakira&utm_campaign=Badge_Grade_Dashboard)
 [![Discord Server](https://discordapp.com/api/guilds/357272833824522250/embed.png)](https://discord.gg/ZPmq7EQ)
 [![Donate on Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/axelgreavette)
 [![Dependancies](https://david-dm.org/axelgreavette/Sakira.svg)](https://david-dm.org/axelgreavette/Sakira)
