@@ -29,5 +29,6 @@ module.exports = class pruneCommand extends Command {
             })
         }catch(e){
             msg.say(`Well, sorry, but it looks like there was an error: \n ${e}`)
+        }
     }
 }
