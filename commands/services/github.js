@@ -36,7 +36,7 @@ module.exports = class githubCommand extends Command {
                     .addField("­", `**Following**: ${git.following}**\nUrl**: ${git.html_url}`, true)
                     .setThumbnail(git.avatar_url)
                     //.setTimestamp(git.created_at)
-                    .setFooter("Profile created ")
+                    .setFooter("Timestamps temporarily removed")
                     .setColor("0x36393F")
                     .setTitle(`${git.login}'s Github Profile`)
                 msg.embed(embed)
