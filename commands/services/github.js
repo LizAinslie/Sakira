@@ -41,5 +41,8 @@ module.exports = class githubCommand extends Command {
                     .setTitle(`${git.login}'s Github Profile`)
                 msg.embed(embed)
             })
+        }catch(e){
+            msg.say(`An error occured: \n ${e}`)
+        }
     }
 }
