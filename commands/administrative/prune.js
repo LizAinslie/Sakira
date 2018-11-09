@@ -23,8 +23,11 @@ module.exports = class pruneCommand extends Command {
         })
     }
     run(msg, { input }) {
-        msg.channel.bulkDelete(input).then(() => {
-            msg.channel.send(`Deleted ${input} messages`).then(message => setTimeout(() => {message.delete()}, 10000))
-        }).catch()
+        try{
+            msg.channel.bulkDelete(input).then(() => {
+                msg.channel.send(`Deleted ${input} messages`).then(message => setTimeout(() => {message.delete()}, 10000))
+            })
+        }catch(e){
+            msg.say(`Well, sorry, but it looks like there was an error: \n ${e}`)
     }
 }
