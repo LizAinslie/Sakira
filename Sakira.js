@@ -143,16 +143,6 @@ client.on("unknownCommand", msg => {
     }
 })
 */
-client.on("guildMemberAdd", async (member) => {
-    if (member.guild.settings.get("wc") && member.guild.settings.get("wm")) {
-        const wc = await member.guild.channels.get(member.guild.settings.get("wc"))
-        const wm = await member.guild.settings.get("wm")
-        wc.send(wm.replace(/\$\$USER/g, member.displayName).replace(/\$\$GUILD/g, member.guild.name).replace(/\$\$MENTION/g, member))
-    }
-    if (member.guild.settings.get("arr")) {
-        await member.roles.add(member.guild.settings.get("arr"))
-    }
-})
 
 process.on("unhandledRejection", r=>{
     setInterval(() => {

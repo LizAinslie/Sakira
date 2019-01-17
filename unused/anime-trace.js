@@ -16,7 +16,7 @@ module.exports = class tracemoeCommand extends Command {
             args: [{
                 key: "image",
                 prompt: "What image do you want to lookup?",
-                type: "image",
+                type: "image"
             }],
             throttling: {
                 usages: 5,
@@ -26,6 +26,7 @@ module.exports = class tracemoeCommand extends Command {
     }
 
     async run(msg, { image }) {
+        if (image.includes(".gif")) return msg.say("Please try again with a different filetype!")
         const imageURL = await image2base64(image)
         const options = {
             method: "POST",
@@ -37,6 +38,7 @@ module.exports = class tracemoeCommand extends Command {
         }
         try {
             request(options, function(error, response, body) {
+                if(error) return msg.say("Oh no something's up. Please try again momentarily!")
                 body = JSON.parse(body)
                 Anime.fromId(body.docs[0].mal_id).then(anime => {
                     const embed = new MessageEmbed()
