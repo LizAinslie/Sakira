@@ -35,7 +35,7 @@ module.exports = class ColorCommand extends Command {
             msg.say({ files: [{ attachment: canvas.toBuffer(), name: "color.png" }] })
             msg.channel.stopTyping()
         }catch(error){
-            msg.channel.send("Welp: \`\`\`" + error + "\`\`\`")
+            msg.say("Welp: \`\`\`" + error + "\`\`\`")
         }
     }
 }

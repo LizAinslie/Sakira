@@ -6,14 +6,14 @@ const request = require("request")
 const trbmb = require("./util/Trbmb")
 const sqlite = require("sqlite")
 const { SQLiteProvider } = require("discord.js-commando")
-const Sentry = require("@sentry/node")
+//const Sentry = require("@sentry/node")
 
-//sentry initialization
+/*sentry initialization
 Sentry.init({ 
     dsn: SAKIRA_SENTRY_DSN,
     release: `sakira@${SAKIRA_VERSION}`
 })
-
+*/
 //client setup
 const client = new Client({
     commandPrefix: SAKIRA_PREFIX,
@@ -107,6 +107,10 @@ client.on("error", e => {
 })
 client.on("warn", warn => {
     console.warn(warn)
+})
+client.on("rateLimit", function (msg, rateLimitInfo) {
+    msg.channel.send("An error occured. Please try again momentarily.")
+    console.log(JSON.stringify(rateLimitInfo))
 })
 client.on("disconnect", e => {
     setInterval(() => {

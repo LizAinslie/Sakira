@@ -9,8 +9,8 @@ const { GITHUB } = process.env
 module.exports = class GithubCommand extends Command {
     constructor(client) {
         super(client, {
-            name: "repo",
-            aliases: ["github-repository", "github-repo", "git-repo", "gh-repo"],
+            name: "github-repo",
+            aliases: ["github-repository", "gh-repo"],
             group: "services",
             memberName: "repo",
             description: "Responds with information on the inputed Github repo.",
