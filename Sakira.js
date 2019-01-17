@@ -3,7 +3,7 @@ const { SAKIRA_TOKEN, OWNERS, SAKIRA_PREFIX, INVITE, TWITCH_CLIENT_ID, SAKIRA_VE
 const path = require("path")
 const Client = require("./structures/Client")
 const request = require("request")
-const trbmb = require("./util/Trbmb")
+//const trbmb = require("./util/Trbmb")
 const sqlite = require("sqlite")
 const { SQLiteProvider } = require("discord.js-commando")
 //const Sentry = require("@sentry/node")
@@ -121,6 +121,7 @@ client.on("disconnect", e => {
 client.on("reconnect", () =>{
     console.log("I reconnected successfully")
 })
+/* Disabled until it's fixed
 client.on("unknownCommand", msg => {
     try{
         if ((msg.guild) ? !msg.content.startsWith(msg.guild._commandPrefix) : !msg.content.match(/^\$/) && !msg.content.match(/^\>\>/)) {
@@ -141,6 +142,7 @@ client.on("unknownCommand", msg => {
         console.log(e)
     }
 })
+*/
 client.on("guildMemberAdd", async (member) => {
     if (member.guild.settings.get("wc") && member.guild.settings.get("wm")) {
         const wc = await member.guild.channels.get(member.guild.settings.get("wc"))
