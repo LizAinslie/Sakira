@@ -16,7 +16,7 @@ module.exports = class PingCommand extends Command {
         const embed = new MessageEmbed()
             .setTitle("Pong!")
             .setColor("0x36393F")
-            .addField("» Gateway:", Math.round(this.client.ping) + "ms", true)
+            .addField("» Gateway:", this.client.ws.ping.toFixed(2) + "ms", true)
             .addField("» Message:", sent.createdTimestamp - msg.createdTimestamp + "ms", true)
         sent.edit(embed)
     }
