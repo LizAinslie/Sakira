@@ -46,3 +46,4 @@ module.exports = class ToBeContinuedCommand extends Command {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
+}
