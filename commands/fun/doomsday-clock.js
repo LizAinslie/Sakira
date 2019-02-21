@@ -7,7 +7,7 @@ module.exports = class DoomsdayClockCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'doomsday-clock',
-			group: 'events',
+			group: 'fun',
 			memberName: 'doomsday-clock',
 			description: 'Responds with the current time of the Doomsday Clock.'
 		})
