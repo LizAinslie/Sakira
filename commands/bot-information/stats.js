@@ -29,7 +29,7 @@ module.exports = class statsCommand extends Command {
                 .setTitle("Statistics:")
                 .setColor("0x36393F")
                 .addField("­", `Channels: **${this.client.channels.size}**\nUsers: **${this.client.users.size}**\nGuilds: **${this.client.guilds.size}**\nCommands: **${this.client.registry.commands.size}**\nBuild: **${res[0].status === "success" ? "Passing" : "Failing"}**`, true)
-                .addField("­", `Version: **${SAKIRA_VERSION}**\nPing: **${this.client.ws.ping.toFixed(2)}ms**\nUptime: **${uptime()}**\nRAM: **${formatBytes(process.memoryUsage().heapUsed,2)}**\nLatest Commit : **[${JSON.parse(body)[0].sha.substring(0, 7)}](https://github.com/axelgreavette/Sakira/commit/**`, true)
+                .addField("­", `Version: **${SAKIRA_VERSION}**\nPing: **${this.client.ws.ping.toFixed(2)}ms**\nUptime: **${uptime()}**\nRAM: **${formatBytes(process.memoryUsage().heapUsed,2)}**\nLatest Commit : **[${JSON.parse(body)[0].sha.substring(0, 7)}](https://github.com/axelgreavette/Sakira/commit/${JSON.parse(body)[0].sha.substring(0, 7)})**`, true)
             msg.embed(embed)
         })
     }
