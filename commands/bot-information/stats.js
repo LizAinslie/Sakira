@@ -2,6 +2,7 @@ const Command = require("../../structures/Command")
 const { MessageEmbed } = require("discord.js")
 const circleci = require("circleci")
 const { CIRCLE_AUTH, SAKIRA_VERSION } = process.env
+const request = require("request")
 
 const ci = new circleci({
     auth: CIRCLE_AUTH
@@ -22,12 +23,14 @@ module.exports = class statsCommand extends Command {
     }
     async run(msg) {
         const res = await ci.getBuilds({ username: "axelgreavette", project: "Sakira" })
-
-        const embed = new MessageEmbed()
-            .setTitle("Statistics:")
-            .setColor("0x36393F")
-            .addField("­", `Channels: **${this.client.channels.size}**\nUsers: **${this.client.users.size}**\nGuilds: **${this.client.guilds.size}**\nCommands: **${this.client.registry.commands.size}**\nBuild: **${res[0].status === "success" ? "Passing" : "Failing"}**`, true)
-            .addField("­", `Version: **${SAKIRA_VERSION}**\nPing: **${this.client.ws.ping.toFixed(2)}ms**\nUptime: **${uptime()}**\nRAM: **${formatBytes(process.memoryUsage().heapUsed,2)}**\n`, true)
-        msg.embed(embed)
+    
+        request("https://github.com/repos/axelgreavette/Sakira/commits", function(error, response, body) {
+            const embed = new MessageEmbed()
+                .setTitle("Statistics:")
+                .setColor("0x36393F")
+                .addField("­", `Channels: **${this.client.channels.size}**\nUsers: **${this.client.users.size}**\nGuilds: **${this.client.guilds.size}**\nCommands: **${this.client.registry.commands.size}**\nBuild: **${res[0].status === "success" ? "Passing" : "Failing"}**`, true)
+                .addField("­", `Version: **${SAKIRA_VERSION}**\nPing: **${this.client.ws.ping.toFixed(2)}ms**\nUptime: **${uptime()}**\nRAM: **${formatBytes(process.memoryUsage().heapUsed,2)}**\nLatest Commit : **[${JSON.parse(body)[0].sha.substring(0, 7)}](https://github.com/axelgreavette/Sakira/commit/**`, true)
+            msg.embed(embed)
+        })
     }
 }
