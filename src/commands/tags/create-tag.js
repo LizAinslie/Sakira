@@ -1,7 +1,7 @@
 const Command = require("../../structures/Command")
 const sql = require("sqlite")
 
-sql.open("./database.sqlite3")
+sql.open("../database.sqlite3")
 
 
 module.exports = class createTagCommand extends Command {

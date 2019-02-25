@@ -39,9 +39,7 @@ client.registry
         ["tags", "Tags:"],
         ["administrative", "Administrative:"],
         ["bot-information", "Bot Information:"],
-        ["profiles", "Profiles:"],
         ["owner", "Bot Owner:"],
-        ["voice", "Voice Chat:"]
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
@@ -121,28 +119,6 @@ client.on("disconnect", e => {
 client.on("reconnect", () =>{
     console.log("I reconnected successfully")
 })
-/* Disabled until it's fixed
-client.on("unknownCommand", msg => {
-    try{
-        if ((msg.guild) ? !msg.content.startsWith(msg.guild._commandPrefix) : !msg.content.match(/^\$/) && !msg.content.match(/^\>\>/)) {
-            return false
-        }else if(msg.channel.type === "dm"){
-            return false
-        }else{
-            const input = msg.content.replace(`<@${client.user.id}> `, "").replace(`<!@${client.user.id}> `, "")
-            msg.channel.startTyping()
-            if (encodeURI(input.toUpperCase()) === "IP") return msg.channel.send("haha yeah no")
-            request(`http://ask.pannous.com/api?input=${input}`, function (error, response, body) {
-                body = JSON.parse(body)
-                msg.channel.send((body.output[0]) ? body.output[0].actions.say.text.replace("Jeannie", "Sakira") : new trbmb().trbmb)
-            })
-            msg.channel.stopTyping()
-        }
-    }catch(e){
-        console.log(e)
-    }
-})
-*/
 
 process.on("unhandledRejection", r=>{
     setInterval(() => {

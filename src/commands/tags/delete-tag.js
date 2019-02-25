@@ -2,7 +2,7 @@ const Command = require("../../structures/Command")
 const sql = require("sqlite")
 const { OWNERS } = process.env
 
-sql.open("./database.sqlite3")
+sql.open("../database.sqlite3")
 
 
 module.exports = class deleteTagCommand extends Command {
