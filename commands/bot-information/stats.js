@@ -22,14 +22,11 @@ module.exports = class statsCommand extends Command {
     }
     async run(msg) {
         const res = await ci.getBuilds({ username: "axelgreavette", project: "Sakira" })
-    
-        request("https://github.com/repos/axelgreavette/Sakira/commits", function(error, response, body) {
-            const embed = new MessageEmbed()
-                .setTitle("Statistics:")
-                .setColor("0x36393F")
-                .addField("­", `Channels: **${this.client.channels.size}**\nUsers: **${this.client.users.size}**\nGuilds: **${this.client.guilds.size}**\nCommands: **${this.client.registry.commands.size}**\nBuild: **${res[0].status === "success" ? "Passing" : "Failing"}**`, true)
-                .addField("­", `Version: **${SAKIRA_VERSION}**\nPing: **${this.client.ws.ping.toFixed(2)}ms**\nUptime: **${uptime()}**\nRAM: **${formatBytes(process.memoryUsage().heapUsed,2)}**\n`, true)
-            msg.embed(embed)
-        })
+        const embed = new MessageEmbed()
+            .setTitle("Statistics:")
+            .setColor("0x36393F")
+            .addField("­", `Channels: **${this.client.channels.size}**\nUsers: **${this.client.users.size}**\nGuilds: **${this.client.guilds.size}**\nCommands: **${this.client.registry.commands.size}**\nBuild: **${res[0].status === "success" ? "Passing" : "Failing"}**`, true)
+            .addField("­", `Version: **${SAKIRA_VERSION}**\nPing: **${this.client.ws.ping.toFixed(2)}ms**\nUptime: **${uptime()}**\nRAM: **${formatBytes(process.memoryUsage().heapUsed,2)}**\n`, true)
+        msg.embed(embed)
     }
 }
