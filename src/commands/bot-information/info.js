@@ -25,8 +25,8 @@ module.exports = class infoCommand extends Command {
             .setTitle(this.client.user.username)
             .setColor("0x36393F")
             .setDescription("A bot with enough features to make you want to ~~die~~ jump up and down")
-            .addField(`Creator${(OWNERS.split(",").length === 1) ? ":":"s:"}`, "**Kirox#3435** and **Kerox#1558**")
-            .addField("Code:", "My entire source is available on [Github](https://github.com/axelgreavette/sakira)")
+            .addField(`Creator${(OWNERS.split(",").length === 1) ? ":":"s:"}`, `${(OWNERS.split(",").length === 1) ? "**axelgreavette#3435**": "**axelgreavette#3435** and **Kerox#1558**"}`)
+            .addField("Code:", "My entire source is available on [Github](https://github.com/axelgreavette/Sakira)")
             .addField("Build:", `${res[0].status === "success" ? "Passing" : "Failing"}`)
         msg.embed(embed)
     }
