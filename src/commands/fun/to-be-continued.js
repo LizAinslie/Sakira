@@ -20,7 +20,7 @@ module.exports = class ToBeContinuedCommand extends Command {
 				{
 					key: 'image',
 					prompt: 'What image would you like to edit?',
-					type: 'image',
+					type: 'image|avatar',
 					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
 				}
 			]
