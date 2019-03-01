@@ -18,21 +18,20 @@ module.exports = class BobRossCommand extends Command {
             clientPermissions: ["ATTACH_FILES"],
             args: [
                 {
-                    key: "user",
+                    key: "image",
                     prompt: "Which user would you like to edit the avatar of?",
-                    type: "user",
-                    default: msg => msg.author
+                    type: "avatar|image",
+					default: msg => msg.author.displayAvatarURL({ format: 'png', size: 512 })
                 }
             ]
         })
     }
 
-    async run(msg, { user }) {
-        const avatarURL = user.displayAvatarURL({ format: "png", size: 512 })
+    async run(msg, { image }) {
         try {
             msg.channel.startTyping()
             const base = await loadImage(path.join(__dirname, "..", "..", "assets", "images", "bob-ross.png"))
-            const { body } = await request.get(avatarURL)
+            const { body } = await request.get(image)
             const avatar = await loadImage(body)
             const canvas = createCanvas(base.width, base.height)
             const ctx = canvas.getContext("2d")
