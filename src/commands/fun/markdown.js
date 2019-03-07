@@ -13,6 +13,6 @@ module.exports = class markdownCommand extends Command {
         })
     }
     run(msg) {
-        msg.say("This might help you:", {file: join(__dirname, "..", "..", "assets", "images", "14fAAmethystgemclamia.png"), name:"Markdown.png"})
+        msg.say({files: [{attachment: join(__dirname, "..", "..", "assets", "images", "14fAAmethystgemclamia.png"), name:"Markdown.png" }] })
     }
 }
