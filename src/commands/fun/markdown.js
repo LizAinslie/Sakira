@@ -1,4 +1,5 @@
 const Command = require("../../structures/Command")
+const { join } = require("path")
 
 module.exports = class markdownCommand extends Command {
     constructor(client) {
@@ -12,6 +13,6 @@ module.exports = class markdownCommand extends Command {
         })
     }
     run(msg) {
-        msg.say({file: "https://cdn.shodanbot.com/2849824/14fAAmethystgemclamia.png"})
+        msg.say("This might help you:", {file: join(__dirname, "..", "..", "assets", "images", "14fAAmethystgemclamia.png" name:"Markdown.png"})
     }
 }
