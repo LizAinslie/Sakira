@@ -3,7 +3,7 @@ const sql = require("sqlite")
 const { OWNERS } = process.env
 const { join } = require("path")
 
-sql.open(join(__dirname, "database.sqlite3"))
+sql.open(join(__dirname, "..", "..", "database.sqlite3"))
 
 
 module.exports = class editTagCommand extends Command {
