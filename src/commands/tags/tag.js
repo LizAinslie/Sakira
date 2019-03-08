@@ -2,7 +2,7 @@ const Command = require("../../structures/Command")
 const sql = require("sqlite")
 const { join } = require("path")
 
-sql.open(join(__dirname, "database.sqlite3"))
+sql.open(join(__dirname, "..", "..", "database.sqlite3"))
 
 
 module.exports = class tagCommand extends Command {
