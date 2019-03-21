@@ -16,13 +16,20 @@ module.exports = class WebhookCommand extends Command {
                     key: "content",
                     prompt: "What would you like to proclaim?",
                     type: "string"
+                },
+                {
+                    key: "webhook",
+                    prompt: "Which webhook should I send it to?",
+                    type: "string",
+                    oneOf: [ "pmd", "ksc", "PMD", "KSC"]
                 }
             ]
         })
     }
-    async run(msg, { content }){
+    async run(msg, { content, webhook }){
         if (msg.channel.type === "text" && msg.deletable) await msg.delete()
-        this.client.webhook.send(content)
+        if (webhook.toUpperCase() === "PMD") this.client.webhook.PMD.send(content)
+        else if (webhook.toUpperCase() == "KSC") this.client.webhook.KSC.send(content)
         return null
     }
 }
