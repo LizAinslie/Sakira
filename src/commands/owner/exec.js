@@ -23,13 +23,13 @@ module.exports = class execCommand extends Command {
     }
     run(msg, { input }) {
 	  try{
-		      cp.exec(`${input}`,(error, stdout, stderr) => {
+		cp.exec(`${input}`,(error, stdout, stderr) => {
                 if(error) return console.log({error, stdout, stderr})
                 console.log(stdout)
-                msg.say(stdout)
+                msg.say(stdout, { split: true})
             })
 	  }catch(e){
-		  msg.say(e)
+		msg.say(e, { split: true })
 	  }
     }
 }
